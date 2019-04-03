@@ -125,7 +125,6 @@ void Switcher::switch_ascii(bool fl){
 
 void Switcher::disconnect() {
     qDebug()<<"SWITCHER::DISCONNECT --------";
-    //ЗДЕСЬ МЫ ПАДАЕМ!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     if ( mComAThread->isRunning() && flAOpened ) {
         flAOpened = false;
         qDebug()<<"COM A is running. Terminating... ";

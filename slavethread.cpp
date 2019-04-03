@@ -17,12 +17,9 @@ SlaveThread::SlaveThread(QObject *parent)
 
 }
 
-
-
 void SlaveThread::startSlave(PortSettings portSettings)
 {
     qDebug()<<"SlaveThread::starting slave!";
-
     this->mPortName = portSettings.port();
     this->waitTimeout = portSettings.timeout();
     qDebug()<<"SLAVE THREAD BAUD RATE"<<portSettings.baudRate();
@@ -39,17 +36,14 @@ void SlaveThread::run()
     mSerial->setBaudRate(mBaudRate);
 
     if ( !mSerial->open(QIODevice::ReadWrite) ) {
-
         qDebug()<<"CAN NOT OPEN COM PORT"<<mSerial->error();
         emit error(QString("can not open %1").arg(mPortName));
-
     }
     else {
         qDebug()<<"SERIAL OPENED!";
         emit connected_ok(mPortName, mBaudRate);
         emit connected_ok();
         connect(mSerial, &QSerialPort::readyRead, this, &SlaveThread::handleReadyRead);
-
     }
     exec();
 }
