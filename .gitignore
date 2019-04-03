@@ -3,3 +3,4 @@ moc_*
 Makefile.*
 release/*
 .qmake.stash
+.terminal
